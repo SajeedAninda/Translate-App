@@ -32,6 +32,8 @@ const Translator = () => {
                 </div>
 
                 <hr className="w-[100%] border border-[#4D5562] mt-4 mb-2 opacity-75" />
+
+                <textarea className="bg-transparent resize-none outline-none text-white w-[100%]" name="translationText" id="translationText" cols={30} rows={8}></textarea>
             </div>
         </div>
     );
