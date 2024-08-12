@@ -1,6 +1,7 @@
 import React from 'react';
 import "./home.css"
 import logo from "../../assets/logo.svg"
+import Translator from '../Translator/Translator';
 
 const Home = () => {
     return (
@@ -8,6 +9,8 @@ const Home = () => {
             <div className='flex justify-center items-center pt-20'>
                 <img className='w-[150px]' src={logo} alt="" />
             </div>
+
+            <Translator></Translator>
         </div>
     );
 };
