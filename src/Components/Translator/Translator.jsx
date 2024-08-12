@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import soundLogo from "../../assets/sound_max_fill.svg";
+import copyLogo from "../../assets/Copy.svg";
+import translatorLogo from "../../assets/Sort_alfa.svg";
 
 const Translator = () => {
     let [activeButton, setActiveButton] = useState(null);
@@ -40,9 +43,21 @@ const Translator = () => {
                 <hr className="w-[100%] border border-[#4D5562] mt-4 mb-2 opacity-75" />
 
                 <div className='relative'>
-                    <textarea onChange={handleTranslationText} className="bg-transparent resize-none outline-none text-white w-[100%]" name="translationText" id="translationText" cols={30} rows={8} maxLength={500}></textarea>
+                    <textarea onChange={handleTranslationText} className="bg-transparent resize-none outline-none text-white w-[100%]" name="translationText" id="translationText" cols={30} rows={6} maxLength={500}></textarea>
 
                     <p className='text-[#4D5562] text-[14px] absolute right-0 bottom-0'>{translationTextCount}/500</p>
+                </div>
+
+                <div className='flex justify-between items-center mt-8'>
+                    <div className='flex gap-2'>
+                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" />
+                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" />
+                    </div>
+
+                    <buttons className='text-white px-4 py-3 rounded-xl border-2 bg-[#3662E3] border-[#7CA9F3] text-[16px] font-semibold flex gap-2 justify-between items-center hover:opacity-80 cursor-pointer'>
+                        <img src={translatorLogo} alt="" />
+                        Translate
+                    </buttons>
                 </div>
             </div>
         </div>
