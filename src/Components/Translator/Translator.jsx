@@ -40,7 +40,7 @@ const Translator = () => {
                 <hr className="w-[100%] border border-[#4D5562] mt-4 mb-2 opacity-75" />
 
                 <div className='relative'>
-                    <textarea onChange={handleTranslationText} className="bg-transparent resize-none outline-none text-white w-[100%]" name="translationText" id="translationText" cols={30} rows={8}></textarea>
+                    <textarea onChange={handleTranslationText} className="bg-transparent resize-none outline-none text-white w-[100%]" name="translationText" id="translationText" cols={30} rows={8} maxLength={500}></textarea>
 
                     <p className='text-[#4D5562] text-[14px] absolute right-0 bottom-0'>{translationTextCount}/500</p>
                 </div>
