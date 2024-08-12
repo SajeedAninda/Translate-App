@@ -21,9 +21,9 @@ const Translator = () => {
 
 
     return (
-        <div className='w-[90%] mx-auto py-16 flex justify-between gap-6 items-center'>
-            <div className='h-[367px] bg-[#212936cc] p-8 rounded-3xl w-[50%] gap-6 firstDiv'>
-                <div className='flex gap-4 items-start justify-start'>
+        <div className='w-[90%] mx-auto py-16 flex flex-col lg:flex-row justify-between gap-6 items-center'>
+            <div className='h-fit md:h-[367px] bg-[#212936cc] p-8 rounded-3xl w-full lg:w-[50%] gap-6 firstDiv'>
+                <div className='flex flex-wrap gap-4 items-start justify-start'>
                     <button onClick={() => handleButtonClick("Detect Language")} className='text-[16px] font-semibold cursor-pointer py-2 rounded-xl text-[#4D5562]'>
                         Detect Language
                     </button>
@@ -65,7 +65,7 @@ const Translator = () => {
 
 
 
-            <div className='h-[367px] bg-[#121826cc] p-8 rounded-3xl w-[50%] gap-6 secondDiv'>
+            <div className='h-fit md:h-[367px] bg-[#121826cc] p-8 rounded-3xl w-full lg:w-[50%] gap-6 secondDiv'>
                 <div className='flex justify-between items-center'>
                     <div className='flex gap-4 items-start justify-start'>
                         <button onClick={() => handleButtonClick("English")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
