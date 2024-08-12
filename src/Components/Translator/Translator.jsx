@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import soundLogo from "../../assets/sound_max_fill.svg";
 import copyLogo from "../../assets/Copy.svg";
 import translatorLogo from "../../assets/Sort_alfa.svg";
+import exchangeIcon from "../../assets/Horizontal_top_left_main.svg";
 
 const Translator = () => {
     let [activeButton, setActiveButton] = useState(null);
@@ -65,19 +66,23 @@ const Translator = () => {
 
 
             <div className='h-[367px] bg-[#121826cc] p-8 rounded-3xl w-[50%] gap-6 secondDiv'>
-                <div className='flex gap-4 items-start justify-start'>
-                    <button onClick={() => handleButtonClick("English")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                        }`}>
-                        English
-                    </button>
-                    <button onClick={() => handleButtonClick("French")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'French' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                        }`}>
-                        French
-                    </button>
-                    <button onClick={() => handleButtonClick("Spanish")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'Spanish' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                        }`}>
-                        Spanish
-                    </button>
+                <div className='flex justify-between items-center'>
+                    <div className='flex gap-4 items-start justify-start'>
+                        <button onClick={() => handleButtonClick("English")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
+                            }`}>
+                            English
+                        </button>
+                        <button onClick={() => handleButtonClick("French")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'French' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
+                            }`}>
+                            French
+                        </button>
+                        <button onClick={() => handleButtonClick("Spanish")} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'Spanish' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
+                            }`}>
+                            Spanish
+                        </button>
+                    </div>
+
+                    <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={exchangeIcon} alt="" />
                 </div>
 
                 <hr className="w-[100%] border border-[#4D5562] mt-4 mb-2 opacity-75" />
