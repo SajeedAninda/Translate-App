@@ -5,15 +5,22 @@ import translatorLogo from "../../assets/Sort_alfa.svg";
 import exchangeIcon from "../../assets/Horizontal_top_left_main.svg";
 
 const Translator = () => {
-    const [activeButton, setActiveButton] = useState(null);
+    const [activeTranslatableButton, setActiveTranslatableButton] = useState('English');
+    const [activeTranslatedButton, setActiveTranslatedButton] = useState('French');
     const [translationTextCount, setTranslationTextCount] = useState(0);
     const [translationText, setTranslationText] = useState('Hello, how are you?');
     const [translatedText, setTranslatedText] = useState("");
     const [translatableLangCode, setTranslatableLangCode] = useState('en');
     const [translatedLangCode, setTranslatedLangCode] = useState('fr');
 
-    const handleButtonClick = (buttonName) => {
-        setActiveButton(buttonName);
+    const handleTranslatableButtonClick = (buttonName, langCode) => {
+        setActiveTranslatableButton(buttonName);
+        setTranslatableLangCode(langCode);
+    }
+
+    const handleTranslatedButtonClick = (buttonName, langCode) => {
+        setActiveTranslatedButton(buttonName);
+        setTranslatedLangCode(langCode);
     }
 
     const handleTranslationText = (e) => {
@@ -38,26 +45,22 @@ const Translator = () => {
 
     return (
         <div className='w-[90%] mx-auto py-16 flex flex-col lg:flex-row justify-between gap-6 items-center'>
+            {/* Left Div */}
             <div className='h-fit md:h-[367px] bg-[#212936cc] p-8 rounded-3xl w-full lg:w-[50%] gap-6 firstDiv'>
                 <div className='flex flex-wrap gap-4 items-start justify-start'>
-                    <button onClick={() => handleButtonClick("Detect Language")} className='text-[16px] font-semibold cursor-pointer py-2 rounded-xl text-[#4D5562]'>
+                    <button onClick={() => handleTranslatableButtonClick("Detect Language", "")} className='text-[16px] font-semibold cursor-pointer py-2 rounded-xl text-[#4D5562]'>
                         Detect Language
                     </button>
                     <button
-                        onClick={() => {
-                            handleButtonClick("English");
-                            setTranslatableLangCode('en');
-                        }}
-                        className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}
+                        onClick={() => handleTranslatableButtonClick("English", 'en')}
+                        className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatableButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}
                     >
                         English
                     </button>
-                    <button onClick={() => {handleButtonClick("French"); setTranslatableLangCode('fr');}} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'French' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                        }`}>
+                    <button onClick={() => handleTranslatableButtonClick("French", 'fr')} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatableButton === 'French' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}>
                         French
                     </button>
-                    <button onClick={() => {handleButtonClick("Spanish"); setTranslatableLangCode('es')}} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'Spanish' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                        }`}>
+                    <button onClick={() => handleTranslatableButtonClick("Spanish", 'es')} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatableButton === 'Spanish' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}>
                         Spanish
                     </button>
                 </div>
@@ -83,24 +86,20 @@ const Translator = () => {
                 </div>
             </div>
 
+            {/* Right Div */}
             <div className='h-fit md:h-[367px] bg-[#121826cc] p-8 rounded-3xl w-full lg:w-[50%] gap-6 secondDiv'>
                 <div className='flex justify-between items-center'>
                     <div className='flex gap-4 items-start justify-start'>
-                    <button
-                        onClick={() => {
-                            handleButtonClick("English");
-                            setTranslatedLangCode('en');
-                        }}
-                        className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}
-                    >
-                        English
-                    </button>
-                        <button onClick={() => {handleButtonClick("French"); setTranslatedLangCode('fr')}} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'French' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                            }`}>
+                        <button
+                            onClick={() => handleTranslatedButtonClick("English", 'en')}
+                            className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatedButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}
+                        >
+                            English
+                        </button>
+                        <button onClick={() => handleTranslatedButtonClick("French", 'fr')} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatedButton === 'French' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}>
                             French
                         </button>
-                        <button onClick={() => {handleButtonClick("Spanish"); setTranslatedLangCode('es')}} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeButton === 'Spanish' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'
-                            }`}>
+                        <button onClick={() => handleTranslatedButtonClick("Spanish", 'es')} className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatedButton === 'Spanish' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}>
                             Spanish
                         </button>
                     </div>
@@ -111,7 +110,7 @@ const Translator = () => {
                 <hr className="w-[100%] border border-[#4D5562] mt-4 mb-2 opacity-75" />
 
                 <div className=''>
-                    <textarea value={translatedText} readOnly className="bg-transparent resize-none outline-none text-white w-[100%]" name="translationText" id="translationText" cols={30} rows={6} maxLength={500}></textarea>
+                    <textarea value={translatedText} readOnly className="bg-transparent resize-none outline-none text-white w-[100%]" name="translatedText" id="translatedText" cols={30} rows={6} maxLength={500}></textarea>
                 </div>
 
                 <div className='flex mt-8'>
