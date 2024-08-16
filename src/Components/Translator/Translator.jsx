@@ -29,8 +29,20 @@ const Translator = () => {
         setTranslationTextCount(translationText.length);
     }
 
+    const swapLanguages = () => {
+        setActiveTranslatableButton(activeTranslatedButton);
+        setActiveTranslatedButton(activeTranslatableButton);
+
+        setTranslatableLangCode(translatedLangCode);
+        setTranslatedLangCode(translatableLangCode);
+    }
+
     useEffect(() => {
         const translateText = async () => {
+            if (!translationText) {
+                setTranslatedText(""); // Clear translation if there's no input
+                return;
+            }
             try {
                 const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(translationText)}&langpair=${translatableLangCode}|${translatedLangCode}`);
                 const data = await response.json();
@@ -104,7 +116,7 @@ const Translator = () => {
                         </button>
                     </div>
 
-                    <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={exchangeIcon} alt="" />
+                    <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={exchangeIcon} alt="" onClick={swapLanguages} />
                 </div>
 
                 <hr className="w-[100%] border border-[#4D5562] mt-4 mb-2 opacity-75" />
