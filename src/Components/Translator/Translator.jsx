@@ -9,7 +9,8 @@ const Translator = () => {
     let [translationTextCount, setTranslationTextCount] = useState(0);
     let [translationText, setTranslationText] = useState('Hello, how are you?');
     let [translatedText, setTranslatedText] = useState("");
-    
+    let [translatableLangCode, setTranslatableLangCode] = useState('en');
+    let [translatedLangCode, setTranslatedLangCode] = useState('fr');
 
     let handleButtonClick = (buttonName) => {
         setActiveButton(buttonName);
