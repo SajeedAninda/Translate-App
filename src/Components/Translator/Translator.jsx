@@ -40,6 +40,24 @@ const Translator = () => {
         setTranslatedText(translationText);
     }
 
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                alert('Copied to clipboard');
+            })
+            .catch((err) => {
+                alert('Failed to copy: ', err);
+            });
+    };
+
+    const handleCopyTranslatableText = () => {
+        copyToClipboard(translationText);
+    };
+
+    const handleCopyTranslatedText = () => {
+        copyToClipboard(translatedText);
+    };
+
     useEffect(() => {
         const translateText = async () => {
             if (!translationText) {
@@ -91,7 +109,7 @@ const Translator = () => {
                 <div className='flex justify-between items-center mt-8'>
                     <div className='flex gap-2'>
                         <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" />
-                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" />
+                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" onClick={handleCopyTranslatableText} />
                     </div>
 
                     <button onClick={() => { }} className='text-white px-4 py-3 rounded-xl border-2 bg-[#3662E3] border-[#7CA9F3] text-[16px] font-semibold flex gap-2 justify-between items-center hover:opacity-80 cursor-pointer'>
@@ -131,7 +149,7 @@ const Translator = () => {
                 <div className='flex mt-8'>
                     <div className='flex gap-2'>
                         <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" />
-                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" />
+                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" onClick={handleCopyTranslatedText} />
                     </div>
                 </div>
             </div>
