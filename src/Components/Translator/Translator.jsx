@@ -30,17 +30,20 @@ const Translator = () => {
     }
 
     const swapLanguages = () => {
+        const newTranslatableLangCode = translatedLangCode;
+        const newTranslatedLangCode = translatableLangCode;
+        setTranslatableLangCode(newTranslatableLangCode);
+        setTranslatedLangCode(newTranslatedLangCode);
         setActiveTranslatableButton(activeTranslatedButton);
         setActiveTranslatedButton(activeTranslatableButton);
-
-        setTranslatableLangCode(translatedLangCode);
-        setTranslatedLangCode(translatableLangCode);
+        setTranslationText(translatedText);
+        setTranslatedText(translationText);
     }
 
     useEffect(() => {
         const translateText = async () => {
             if (!translationText) {
-                setTranslatedText(""); // Clear translation if there's no input
+                setTranslatedText("");
                 return;
             }
             try {
