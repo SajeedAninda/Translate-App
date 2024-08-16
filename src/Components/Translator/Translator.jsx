@@ -58,6 +58,37 @@ const Translator = () => {
         copyToClipboard(translatedText);
     };
 
+    const speakText = (text, langCode) => {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+
+            switch (langCode) {
+                case 'fr':
+                    utterance.lang = 'fr-FR';
+                    break;
+                case 'es':
+                    utterance.lang = 'es-ES';
+                    break;
+                case 'en':
+                default:
+                    utterance.lang = 'en-US';
+                    break;
+            }
+
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Speech synthesis not supported');
+        }
+    };
+
+    const handleSpeakTranslatableText = () => {
+        speakText(translationText, translatableLangCode);
+    };
+
+    const handleSpeakTranslatedText = () => {
+        speakText(translatedText, translatedLangCode);
+    };
+
     useEffect(() => {
         const translateText = async () => {
             if (!translationText) {
@@ -81,9 +112,6 @@ const Translator = () => {
             {/* Left Div */}
             <div className='h-fit md:h-[367px] bg-[#212936cc] p-8 rounded-3xl w-full lg:w-[50%] gap-6 firstDiv'>
                 <div className='flex flex-wrap gap-4 items-start justify-start'>
-                    <button onClick={() => handleTranslatableButtonClick("Detect Language", "")} className='text-[16px] font-semibold cursor-pointer py-2 rounded-xl text-[#4D5562]'>
-                        Detect Language
-                    </button>
                     <button
                         onClick={() => handleTranslatableButtonClick("English", 'en')}
                         className={`text-[16px] font-semibold cursor-pointer px-3 py-2 rounded-xl ${activeTranslatableButton === 'English' ? 'bg-[#4D5562] text-[#CDD5E0]' : 'text-[#4D5562] bg-transparent'}`}
@@ -108,7 +136,7 @@ const Translator = () => {
 
                 <div className='flex justify-between items-center mt-8'>
                     <div className='flex gap-2'>
-                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" />
+                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" onClick={handleSpeakTranslatableText} />
                         <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" onClick={handleCopyTranslatableText} />
                     </div>
 
@@ -148,7 +176,7 @@ const Translator = () => {
 
                 <div className='flex mt-8'>
                     <div className='flex gap-2'>
-                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" />
+                        <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={soundLogo} alt="" onClick={handleSpeakTranslatedText} />
                         <img className='border-2 border-[#4D5562] rounded-xl p-2 cursor-pointer' src={copyLogo} alt="" onClick={handleCopyTranslatedText} />
                     </div>
                 </div>
